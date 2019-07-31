@@ -11,3 +11,5 @@ Hello this is me
 How do you think about me now
 
 nice to meet uou
+
+this is why we are here man
