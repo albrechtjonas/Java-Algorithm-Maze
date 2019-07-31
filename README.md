@@ -26,3 +26,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
+
+So here is all of those algorithm all about this is great
