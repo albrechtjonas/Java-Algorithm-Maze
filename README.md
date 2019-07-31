@@ -39,3 +39,5 @@ I reaylly need this oppotunity
 
 
 like I mean so much you know
+
+checking news is important
