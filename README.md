@@ -27,27 +27,4 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
 
-download this jar file and follow the construction up to check
-
-great university is very important
-
-I don't like
-
-nice for what
-
-nasa is a great company on space
-
-I reaylly need this oppotunity
-
-
-like I mean so much you know
-
-checking news is important
-
-it is very hot
-
-haha this is nice right
-
-I just wanna find one way to the exit
-
-And this is very important
+follow algorithm
