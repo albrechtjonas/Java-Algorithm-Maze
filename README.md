@@ -26,21 +26,3 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
-
-So here is all of those algorithm all about this is great
-
-a programmer is very busy by the way he is very busy
-
-never saw you like someone like this so much
-
-unity is like java haha very funny hey
-
-my back hurts so much
-
-sometimes I can feel the pain
-
-I hope there is more and more followers to follow me thank you
-
-this is so slow
-
-thank god
