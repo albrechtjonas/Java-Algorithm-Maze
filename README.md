@@ -30,3 +30,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 great university is very important
 
 I don't like
+
+nice for what
