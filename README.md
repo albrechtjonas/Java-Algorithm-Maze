@@ -15,3 +15,5 @@ nice to meet uou
 this is why we are here man
 
 nice to meet you I am very glad
+
+there is dfs and bfs which are all great alogirhtm to solve this
