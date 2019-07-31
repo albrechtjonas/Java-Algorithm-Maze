@@ -27,6 +27,8 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
 
+download this jar file and follow the construction up to check
+
 great university is very important
 
 I don't like
