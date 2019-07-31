@@ -28,3 +28,11 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 # Please Follow dominicjiang On Github
 
 follow algorithm
+
+## Contributor List:
+
+1. 
+
+2. 
+
+3. 
