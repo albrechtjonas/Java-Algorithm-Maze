@@ -20,6 +20,13 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 ## Command Center
 
+1. Type startSolving to solve a maze using BFS (Breath First Search Algorithm)
+
+2. Type startMaking to make a maze using DFS (Depth First Search Algorithm)
+
+3. Type exportTextMap to export a loadable maze for solving or keeping
+
+4. Type importMap to import a maze to solve
 
 ## ScreenShot
 
