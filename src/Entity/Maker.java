@@ -11,8 +11,6 @@ public class Maker extends Entity {
 	
 	private int index=0;
 	
-	private boolean loop=true;
-	
 	public Maker(Display display,int x,int y) {
 		super(display,x,y);
 	}
@@ -30,6 +28,11 @@ public class Maker extends Entity {
 		if(display.getRunState().getBFSSolver()!=null) {
 			if(display.getRunState().getBFSSolver().getDone()) {
 				if(index!=display.getRunState().getBFSSolver().getShortestPath().size()) {
+					
+					if(display.getRunState().getBFSSolver().getShowed()==false) {
+						display.getRunState().addPath(new Path(display,x,y));
+					}
+					
 					int number=display.getRunState().getBFSSolver().getShortestPath().get(index);
 					
 					if(number==1) {
@@ -42,16 +45,16 @@ public class Maker extends Entity {
 						x+=display.getResolution();
 					}
 					
-					if(loop==true) {
-					display.getRunState().addPath(new Path(display,x,y));
+					if(display.getRunState().getBFSSolver().getShowed()==false) {
+						display.getRunState().addPath(new Path(display,x,y));
 					}
 					index++;
 				}else {
-					x=0;
-					y=0;
+					x=display.getRunState().getBFSSolver().getStartX();
+					y=display.getRunState().getBFSSolver().getStartY();
 					index=0;
 					
-					loop=false;
+					display.getRunState().getBFSSolver().setShowed(true);
 				}
 			}
 		}
@@ -60,5 +63,9 @@ public class Maker extends Entity {
 	public void render(Graphics2D g) {
 		g.setColor(color);
 		g.fillRect(x,y,display.getResolution(),display.getResolution());
+	}
+	
+	public void setIndex(int index) {
+		this.index=index;
 	}
 }
