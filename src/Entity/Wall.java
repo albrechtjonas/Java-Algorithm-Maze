@@ -14,7 +14,17 @@ public class Wall extends Entity {
 	}
 	
 	public void tick() {
-		
+		if(display.getMouseActionHandler().getPressed()) {
+			if(display.getKeyActionHandler().getRemoveWall()) {
+				int mouseX=display.getMouseMotionHandler().getX()/display.getResolution();
+				
+				int mouseY=display.getMouseMotionHandler().getY()/display.getResolution();
+				
+				if(x==mouseX*display.getResolution() && y==mouseY*display.getResolution()) {
+					display.getRunState().removeWall(this);
+				}
+			}
+		}
 	}
 	
 	public void render(Graphics2D g) {
