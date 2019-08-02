@@ -13,6 +13,10 @@ public class BFSSolver extends Runner implements Runnable {
 	
 	private Thread thread;
 	
+	private int startX;
+	
+	private int startY;
+	
 	private ArrayList<ArrayList<Integer>> locations=new ArrayList<ArrayList<Integer>>();
 	
 	private ArrayList<ArrayList<Integer>> steps=new ArrayList<ArrayList<Integer>>();
@@ -20,6 +24,8 @@ public class BFSSolver extends Runner implements Runnable {
 	private ArrayList<Integer> shortestPath=new ArrayList<Integer>();
 	
 	private boolean done=false;
+	
+	private boolean showed=false;
 	
 	private double time;
 	
@@ -39,6 +45,10 @@ public class BFSSolver extends Runner implements Runnable {
 	}
 	
 	public void run() {
+		
+		startX=display.getRunState().getMaker().getX();
+		
+		startY=display.getRunState().getMaker().getY();
 		
 		long last=System.nanoTime();
 		
@@ -280,11 +290,27 @@ public class BFSSolver extends Runner implements Runnable {
 		
 	}
 	
+	public int getStartX() {
+		return startX;
+	}
+	
+	public int getStartY() {
+		return startY;
+	}
+	
 	public ArrayList<Integer> getShortestPath(){
 		return shortestPath;
 	}
 	
 	public boolean getDone() {
 		return done;
+	}
+	
+	public void setShowed(boolean showed) {
+		this.showed=showed;
+	}
+	
+	public boolean getShowed() {
+		return showed;
 	}
 }
