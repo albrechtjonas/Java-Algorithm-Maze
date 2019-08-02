@@ -31,7 +31,5 @@ public class Exit extends Entity {
 			g.setColor(color);
 		}
 		g.fillRect(x,y,display.getResolution(),display.getResolution());
-		
-		
 	}
 }
