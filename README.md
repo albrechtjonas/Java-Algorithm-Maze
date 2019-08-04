@@ -45,3 +45,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 学习可以让你一直走天下？？？
 
 还是到底怎么找 我真的是服了
+
+人们总是这样 如此无聊
