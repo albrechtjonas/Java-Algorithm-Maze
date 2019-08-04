@@ -50,3 +50,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 真的是无知的命
 人们总是这样 如此无聊
+
+明年总共有这几门课需要好好上 第一个是 物理 
