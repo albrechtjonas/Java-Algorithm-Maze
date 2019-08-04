@@ -64,3 +64,9 @@ Man I loves coding so much and I like swimming too I enjoy my life and like othe
 我感觉敲来敲去就是那么一回事
 
 时间不可以荒废掉 至啊到么
+
+一定呀
+时间不可以荒废掉 至啊到要
+时间不可以荒废掉 至啊到么 好好学习
+时间不可以荒废掉 至啊到么 天天向上
+时间不可以荒废掉 至啊到么
