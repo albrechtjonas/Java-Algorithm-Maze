@@ -80,3 +80,5 @@ Man I loves coding so much and I like swimming too I enjoy my life and like othe
 每周做8个小时就可以做完了
 
 一定要考上个UT要不然对不起亲朋好友
+
+你懂么 一定要加油 加油 在交友
