@@ -39,3 +39,7 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 老妈今天又发表 呵呵了
 
 我真的是服了全雪梅同志了
+
+为什么要一直学习呢
+
+学习可以让你一直走天下？？？
