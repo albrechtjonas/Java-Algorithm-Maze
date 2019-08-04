@@ -54,3 +54,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 明年总共有这几门课需要好好上 第一个是 物理 数学 数学 英语 计算机
 
 Man I loves coding so much and I like swimming too I enjoy my life and like other people around me you know
+
+真的不知道到底这些人学习的目的是什么
