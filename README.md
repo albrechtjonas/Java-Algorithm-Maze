@@ -70,3 +70,5 @@ Man I loves coding so much and I like swimming too I enjoy my life and like othe
 时间不可以荒废掉 至啊到么 好好学习
 时间不可以荒废掉 至啊到么 天天向上
 时间不可以荒废掉 至啊到么
+
+我当然明白这些道理 但是非常的棒
