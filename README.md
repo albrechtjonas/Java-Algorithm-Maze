@@ -56,3 +56,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 Man I loves coding so much and I like swimming too I enjoy my life and like other people around me you know
 
 真的不知道到底这些人学习的目的是什么
+
+他们是将来想要学习 还是怎么着
