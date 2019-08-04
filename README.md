@@ -90,3 +90,5 @@ Man I loves coding so much and I like swimming too I enjoy my life and like othe
 我很喜欢cs
 
 反正把cs都报上吧
+
+我就要学这个 因为我就喜欢这个
