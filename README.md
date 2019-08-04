@@ -35,3 +35,5 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 # Please Follow dominicjiang On Github
 
 是谁的心啊 乖乖的留下
+
+老妈今天又发表 呵呵了
