@@ -68,3 +68,5 @@ Man I loves coding so much and I like swimming too I enjoy my life and like othe
 时间不可以荒废掉 至啊到么 天天向上
 
 明年还有两个文科要学 我真的是烦
+
+但愿老师不要为难我 因为我是真的不喜欢文科 呵呵呵
