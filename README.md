@@ -47,3 +47,6 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 还是到底怎么找 我真的是服了
 
 人们总是这样 如此无聊
+
+真的是无知的命
+人们总是这样 如此无聊
