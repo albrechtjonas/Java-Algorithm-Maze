@@ -38,6 +38,8 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 老妈今天又发表 呵呵了
 
+我就是喜欢学理科
+
 我真的是服了全雪梅同志了
 
 为什么要一直学习呢
