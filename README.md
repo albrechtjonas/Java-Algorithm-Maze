@@ -62,3 +62,5 @@ Man I loves coding so much and I like swimming too I enjoy my life and like othe
 总是有一些人莫名其妙的
 
 我感觉敲来敲去就是那么一回事
+
+时间不可以荒废掉 至啊到么
