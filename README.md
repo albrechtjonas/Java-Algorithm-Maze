@@ -42,3 +42,6 @@ this is really sick
 or is this good
 can I go over my math questions
 
+1000 dollars
+
+this is a good use of recursion
