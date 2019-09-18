@@ -32,10 +32,3 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
-
-nice nice
-
-that is totally amazing
-das
-
-that si good
