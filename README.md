@@ -37,3 +37,7 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 das
 
 know tellis
+
+know
+
+boolean dsadsa
