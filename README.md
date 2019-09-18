@@ -33,23 +33,3 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
-
-This is a good reason example
-
-is this good or no
-
-this is really sick
-or is this good
-can I go over my math questions
-
-1000 dollars
-
-this is a good use of recursion
-
-nice that is good working ethnic
-
-this is a good example
-
-is this a thing 
-
-0 this is a good case
