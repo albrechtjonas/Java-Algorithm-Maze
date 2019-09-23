@@ -5,13 +5,13 @@ import java.awt.event.KeyListener;
 
 public class KeyActionHandler implements KeyListener {
 	
-	private boolean moveMaker=false;
+	private boolean moveEntrance;
 	
-	private boolean moveExit=false;
+	private boolean moveExit;
 	
-	private boolean addWall=false;
+	private boolean addWall;
 	
-	private boolean removeWall=false;
+	private boolean removeWall;
 	
 	public KeyActionHandler() {
 		
@@ -19,31 +19,25 @@ public class KeyActionHandler implements KeyListener {
 
 	public void keyPressed(KeyEvent event) {
 		if(event.getKeyCode()==KeyEvent.VK_1) {
-			moveMaker=true;
+			moveEntrance=true;
 			moveExit=false;
 			addWall=false;
 			removeWall=false;
-		}
-		
-		if(event.getKeyCode()==KeyEvent.VK_2) {
+		}else if(event.getKeyCode()==KeyEvent.VK_2) {
+			moveEntrance=false;
 			moveExit=true;
-			moveMaker=false;
 			addWall=false;
 			removeWall=false;
-		}
-		
-		if(event.getKeyCode()==KeyEvent.VK_3) {
+		}else if(event.getKeyCode()==KeyEvent.VK_3) {
+			moveEntrance=false;
+			moveExit=false;
 			addWall=true;
-			moveExit=false;
-			moveMaker=false;
 			removeWall=false;
-		}
-		
-		if(event.getKeyCode()==KeyEvent.VK_4) {
-			removeWall=true;
+		}else if(event.getKeyCode()==KeyEvent.VK_4) {
+			moveEntrance=false;
 			moveExit=false;
-			moveMaker=false;
 			addWall=false;
+			removeWall=true;
 		}
 	}
 
@@ -55,8 +49,8 @@ public class KeyActionHandler implements KeyListener {
 		
 	}
 	
-	public boolean getMoveMaker() {
-		return moveMaker;
+	public boolean getMoveEntrance() {
+		return moveEntrance;
 	}
 	
 	public boolean getMoveExit() {
@@ -70,5 +64,4 @@ public class KeyActionHandler implements KeyListener {
 	public boolean getRemoveWall() {
 		return removeWall;
 	}
-	
 }
