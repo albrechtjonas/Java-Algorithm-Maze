@@ -14,6 +14,8 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 3. Open terminal and type java (space) -jar (space) and drag the executable jar file in and press enter 
 
+![Screen Shot 2019-09-23 at 1 07 30 PM](https://user-images.githubusercontent.com/49256436/65458998-ba195000-de03-11e9-9d76-77883a336535.png)
+
 4. And the algorithm should be ready to go
 
 
@@ -31,4 +33,3 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 # For More Algorithms And Coding Projects
 # Please Follow dominicjiang On Github
 
-![Screen Shot 2019-09-23 at 1 07 30 PM](https://user-images.githubusercontent.com/49256436/65458998-ba195000-de03-11e9-9d76-77883a336535.png)
