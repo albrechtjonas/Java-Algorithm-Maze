@@ -28,6 +28,14 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 3. Type reset to reset the map
 
+4. - Type 1 to move the entrance (red block)
+
+   - Type 2 to move the exit (blue block)
+   
+   - Type 3 to add wall wherever you click
+   
+   - Type 3 to remove wall wherever you click
+
 ## ScreenShot
 
 
