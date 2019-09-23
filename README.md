@@ -18,6 +18,7 @@ Algorithm Maze made in Java without additional libraries by Dominic Jiang
 
 4. And the algorithm should be ready to go
 
+![Screen Shot 2019-09-23 at 1 08 49 PM](https://user-images.githubusercontent.com/49256436/65459220-46c40e00-de04-11e9-92a6-6be9ab55689e.png)
 
 ## Command Center
 
