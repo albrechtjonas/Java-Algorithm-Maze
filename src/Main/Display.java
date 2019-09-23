@@ -12,11 +12,12 @@ import State.RunState;
 import State.State;
 
 public class Display implements Runnable {
+	
 	private Thread thread;
 	
 	private Window window;
 	
-	private boolean running=false;
+	private boolean running;
 	
 	private double tpt=1000000000/60;
 	
@@ -24,7 +25,7 @@ public class Display implements Runnable {
 	
 	private Graphics g;
 	
-	private int resolution=20;
+	private int resolution=40;
 	
 	private ComponentActionHandler componentActionHandler;
 	
@@ -36,19 +37,11 @@ public class Display implements Runnable {
 	
 	private RunState runState;
 	
-	private boolean startMaking=false;
-	
-	private boolean startSolving=false;
-	
-	private boolean start=false;
-	
 	public Display(Window window) {
 		thread=new Thread(this);
-		
 		this.window=window;
 		
 		createHandler();
-		
 		createState();
 	}
 	
@@ -59,7 +52,7 @@ public class Display implements Runnable {
 		keyActionHandler=new KeyActionHandler();
 		window.getCanvas().addKeyListener(keyActionHandler);
 		
-		mouseActionHandler=new MouseActionHandler(this);
+		mouseActionHandler=new MouseActionHandler();
 		window.getCanvas().addMouseListener(mouseActionHandler);
 		
 		mouseMotionHandler=new MouseMotionHandler();
@@ -68,7 +61,6 @@ public class Display implements Runnable {
 	
 	private void createState() {
 		runState=new RunState(this);
-		
 		State.setState(runState);
 	}
 	
@@ -92,11 +84,9 @@ public class Display implements Runnable {
 		long now;
 		
 		while(running) {
-			
 			now=System.nanoTime();
 			
 			delta+=(now-last)/tpt;
-			
 			last=now;
 			
 			if(delta>=1) {
@@ -104,6 +94,7 @@ public class Display implements Runnable {
 				render();
 				delta--;
 			}
+			
 		}
 	}
 	
@@ -145,14 +136,6 @@ public class Display implements Runnable {
 		return window.getHeight();
 	}
 	
-	public void setTPT(int tpt) {
-		this.tpt=1000000000/tpt;
-	}
-	
-	public double getTPT() {
-		return tpt;
-	}
-	
 	public void setResolution(int resolution) {
 		this.resolution=resolution;
 	}
@@ -177,35 +160,7 @@ public class Display implements Runnable {
 		return mouseMotionHandler;
 	}
 	
-	public void setRunState(RunState runState) {
-		this.runState=runState;
-	}
-	
 	public RunState getRunState() {
 		return runState;
-	}
-	
-	public void setStartMaking(boolean startMaking) {
-		this.startMaking=startMaking;
-	}
-	
-	public boolean getStartMaking() {
-		return startMaking;
-	}
-	
-	public void setStartSolving(boolean startSolving) {
-		this.startSolving=startSolving;
-	}
-	
-	public boolean getStartSolving() {
-		return startSolving;
-	}
-	
-	public void setStart(boolean start) {
-		this.start=start;
-	}
-	
-	public boolean getStart() {
-		return start;
 	}
 }
