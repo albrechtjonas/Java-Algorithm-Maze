@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JTextField;
 
 public class Window {
+	
 	private String title;
 	
 	private int width;
@@ -33,16 +34,18 @@ public class Window {
 	private void createWindow() {
 		frame=new JFrame();
 		frame.setTitle(title);
+		frame.setSize(width,textFieldHeight+height);
 		
 		canvas=new Canvas();
 		canvas.setPreferredSize(new Dimension(width,height));
 		canvas.setMaximumSize(new Dimension(width,height));
 		canvas.setMinimumSize(new Dimension(width,height));
-		frame.add(canvas,BorderLayout.CENTER);
+		frame.getContentPane().add(canvas,BorderLayout.CENTER);
+		
 		
 		textField=new JTextField();
 		textField.setSize(width,textFieldHeight);
-		frame.add(textField,BorderLayout.SOUTH);
+		frame.getContentPane().add(textField,BorderLayout.SOUTH);
 		
 		frame.pack();
 		frame.setVisible(true);
@@ -51,12 +54,16 @@ public class Window {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
+	public String getTitle() {
+		return title;
+	}
+	
 	public int getWidth() {
-		return canvas.getWidth();
+		return width;
 	}
 	
 	public int getHeight() {
-		return canvas.getHeight();
+		return height;
 	}
 	
 	public JFrame getFrame() {
