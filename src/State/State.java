@@ -1,11 +1,9 @@
 package State;
 
-import java.awt.Graphics2D;
-
 import Main.Display;
 
 public abstract class State {
-	public static State currentState=null;
+	public static State currentState;
 	
 	public static void setState(State state) {
 		currentState=state;
@@ -20,8 +18,4 @@ public abstract class State {
 	public State(Display display) {
 		this.display=display;
 	}
-	
-	public abstract void tick();
-	
-	public abstract void render(Graphics2D g);
 }
