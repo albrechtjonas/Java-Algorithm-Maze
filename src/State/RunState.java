@@ -2,8 +2,8 @@ package State;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.ArrayList;
 
+import Entity.Entity;
 import Entity.Entrance;
 import Entity.Exit;
 import Entity.Path;
@@ -18,19 +18,13 @@ public class RunState extends State implements Tickable,Renderable {
 	
 	private boolean DFSMaking;
 	
-	private boolean BFSSolving;
-	
 	private DFSMaker dFSMaker;
+	
+	private boolean BFSSolving;
 	
 	private BFSSolver bFSSolver;
 	
-	private Entrance entrance;
-	
-	private Exit exit;
-	
-	private ArrayList<Wall> walls=new ArrayList<Wall>();
-	
-	private ArrayList<Path> paths=new ArrayList<Path>();
+	private Entity[][] entities;
 	
 	public RunState(Display display) {
 		super(display);
@@ -39,22 +33,33 @@ public class RunState extends State implements Tickable,Renderable {
 	}
 	
 	private void createObject() {
-		entrance=new Entrance(display,0,0);
-		exit=new Exit(display,0,0);
+		entities=new Entity[display.getWidth()/display.getResolution()][display.getHeight()/display.getResolution()];
+		
+		entities[0][0]=new Entrance(display,0,0);
+		
+		entities[entities.length-1][entities.length-1]=new Exit(display,(entities.length-1)*display.getResolution(),(entities.length-1)*display.getResolution());
 	}
 	
 	public void tick() {
+		
 		DFSMakerTick();
 		
 		BFSSolverTick();
 		
-		entrance.tick();
+		addWallTick();
 		
-		exit.tick();
-		
-		for(int i=0;i<walls.size();i++) {
-			walls.get(i).tick();
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Entrance) {
+					((Entrance)(entities[x][y])).tick();
+				}else if(entities[x][y] instanceof Exit) {
+					((Exit)(entities[x][y])).tick();
+				}else if(entities[x][y] instanceof Wall) {
+					((Wall)(entities[x][y])).tick();
+				}
+			}
 		}
+		
 	}
 	
 	private void DFSMakerTick() {
@@ -62,20 +67,6 @@ public class RunState extends State implements Tickable,Renderable {
 			dFSMaker=new DFSMaker(display);
 			dFSMaker.start();
 			DFSMaking=false;
-		}
-		
-		if(dFSMaker!=null && dFSMaker.getDone()) {
-			boolean[][] map=dFSMaker.getMap();
-			
-			for(int x=0;x<map.length;x++) {
-				for(int y=0;y<map.length;y++) {
-					if(map[x][y]==false) {
-						walls.add(new Wall(display,x*display.getResolution(),y*display.getResolution()));
-					}
-				}
-			}
-			dFSMaker.stop();
-			dFSMaker=null;
 		}
 	}
 	
@@ -85,47 +76,35 @@ public class RunState extends State implements Tickable,Renderable {
 			bFSSolver.start();
 			BFSSolving=false;
 		}
-		
-		if(bFSSolver!=null && bFSSolver.getDone() && bFSSolver.getSolution()!=null) {
-			int[] solution=bFSSolver.getSolution();
-			
-			int x=0; int y=0;
-			
-			for(int i=0;i<solution.length;i++) {
-				int step=solution[i];
+	}
+	
+	private void addWallTick() {
+		if(display.getKeyActionHandler().getAddWall()) {
+			if(display.getMouseActionHandler().getPressed()) {
+				int x=display.getMouseMotionHandler().getX()/display.getResolution();
+				int y=display.getMouseMotionHandler().getY()/display.getResolution();
 				
-				if(step==1) {
-					y--;
-					paths.add(new Path(display,x*display.getResolution(),y*display.getResolution()));
-				}else if(step==2) {
-					y++;
-					paths.add(new Path(display,x*display.getResolution(),y*display.getResolution()));
-				}else if(step==3) {
-					x--;
-					paths.add(new Path(display,x*display.getResolution(),y*display.getResolution()));
-				}else if(step==4) {
-					x++;
-					paths.add(new Path(display,x*display.getResolution(),y*display.getResolution()));
+				if(x>=0 && x<=entities.length-1 && y>=0 && y<=entities.length-1) {
+					entities[x][y]=new Wall(display,x*display.getResolution(),y*display.getResolution());
 				}
 			}
-			bFSSolver.stop();
-			bFSSolver=null;
 		}
 	}
 	
 	
 	public void render(Graphics2D g) {
-		
-		entrance.render(g);
-		
-		exit.render(g);
-		
-		for(int i=0;i<walls.size();i++) {
-			walls.get(i).render(g);
-		}
-		
-		for(int i=0;i<paths.size();i++) {
-			paths.get(i).render(g);
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Entrance) {
+					((Entrance)(entities[x][y])).render(g);;
+				}else if(entities[x][y] instanceof Exit) {
+					((Exit)(entities[x][y])).render(g);;
+				}else if(entities[x][y] instanceof Path) {
+					((Path)(entities[x][y])).render(g);
+				}else if(entities[x][y] instanceof Wall) {
+					((Wall)(entities[x][y])).render(g);
+				}
+			}
 		}
 		
 		for(int x=0;x<display.getWidth()/display.getResolution();x++) {
@@ -137,9 +116,7 @@ public class RunState extends State implements Tickable,Renderable {
 	}
 	
 	public void reset() {
-		walls.removeAll(walls);
-		
-		paths.removeAll(paths);
+		createObject();
 		
 		if(dFSMaker!=null) {
 			dFSMaker.stop();
@@ -168,23 +145,29 @@ public class RunState extends State implements Tickable,Renderable {
 		return BFSSolving;
 	}
 	
-	public DFSMaker getDFSMaker() {
-		return dFSMaker;
-	}
-	
-	public BFSSolver getBFSSolver() {
-		return bFSSolver;
+	public Entity[][] getEntities() {
+		return entities;
 	}
 	
 	public Entrance getEntrance() {
-		return entrance;
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Entrance) {
+					return ((Entrance)(entities[x][y]));
+				}
+			}
+		}
+		return null;
 	}
 	
 	public Exit getExit() {
-		return exit;
-	}
-	
-	public ArrayList<Wall> getWalls() {
-		return walls;
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities[x].length;y++) {
+				if(entities[x][y] instanceof Exit) {
+					return ((Exit)(entities[x][y]));
+				}
+			}
+		}
+		return null;
 	}
 }
