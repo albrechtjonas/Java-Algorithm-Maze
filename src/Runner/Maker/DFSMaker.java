@@ -2,7 +2,10 @@ package Runner.Maker;
 
 import java.util.Stack;
 
+import Entity.Entity;
 import Entity.Entrance;
+import Entity.Exit;
+import Entity.Wall;
 import Main.Display;
 import Runner.Runner;
 
@@ -10,15 +13,9 @@ public class DFSMaker extends Runner {
 	
 	private Thread thread;
 	
-	private int startX;
-	
-	private int startY;
-	
 	private Stack<Integer> stacks=new Stack<Integer>();
 	
 	private boolean[][] map;
-	
-	private boolean done;
 	
 	public DFSMaker(Display display) {
 		super(display);
@@ -38,11 +35,15 @@ public class DFSMaker extends Runner {
 	public void run() {
 		map=new boolean[display.getWidth()/display.getResolution()][display.getHeight()/display.getResolution()];
 		
+		Entity[][] entities=display.getRunState().getEntities();
+		
 		Entrance entrance=display.getRunState().getEntrance();
 		
-		int x=entrance.getX()/display.getResolution(); int y=entrance.getY()/display.getResolution();
+		Exit exit=display.getRunState().getExit();
 		
-		startX=x; startY=y;
+		map[exit.getX()/display.getResolution()][exit.getY()/display.getResolution()]=true;
+		
+		int x=entrance.getX()/display.getResolution(); int y=entrance.getY()/display.getResolution();
 		
 		map[x][y]=true;
 	
@@ -51,7 +52,7 @@ public class DFSMaker extends Runner {
 			
 			if(directions[0]==false && directions[1]==false && directions[2]==false && directions[3]==false) {
 				
-				int step=stacks.get(stacks.size()-1);
+				int step=stacks.peek();
 				
 				if(step==0) {
 					y++;
@@ -91,10 +92,109 @@ public class DFSMaker extends Runner {
 			map[x][y]=true;
 			
 			
-		}while(x!=startX || y!=startY);
+		}while(!stacks.isEmpty());
 		
-		done=true;
+		x=exit.getX()/display.getResolution(); y=exit.getY()/display.getResolution();
 		
+		fix(x,y);
+		
+		for(x=0;x<entities.length;x++) {
+			for(y=0;y<entities.length;y++) {
+				if(map[x][y]==false) {
+					entities[x][y]=new Wall(display,x*display.getResolution(),y*display.getResolution());
+				}
+			}
+		}
+		stop();
+	}
+	
+	private void fix(int x,int y) {
+		
+		boolean up=true;
+		
+		boolean down=true;
+		
+		boolean left=true;
+		
+		boolean right=true;
+		
+		if(y==0) {
+			up=false;
+		}
+		
+		if(y==map.length-1) {
+			down=false;
+		}
+		
+		if(x==0) {
+			left=false;
+		}
+		
+		if(x==map.length-1) {
+			right=false;
+		}
+		
+		if(up==true && map[x][y-1]==true) {
+			return;
+		}
+		
+		if(down==true && map[x][y+1]==true) {
+			return;
+		}
+		
+		if(left==true && map[x-1][y]==true) {
+			return;
+		}
+		
+		if(right==true && map[x+1][y]==true) {
+			return;
+		}
+		
+		while(true) {
+			int direction=(int)(Math.random()*4);
+		
+			if(direction==0 && up) {
+				while(true) {
+					y--;
+					
+					if(map[x][y]==true) {
+						return;
+					}else {
+						map[x][y]=true;
+					}
+				}
+			}else if(direction==1 && down) {
+				while(true) {
+					y++;
+					
+					if(map[x][y]==true) {
+						return;
+					}else {
+						map[x][y]=true;
+					}
+				}
+			}else if(direction==2 && left) {
+				while(true) {
+					x--;
+					
+					if(map[x][y]==true) {
+						return;
+					}else {
+						map[x][y]=true;
+					}
+				}
+			}else if(direction==3 && right) {
+				while(true) {
+					x++;
+					
+					if(map[x][y]==true) {
+						return;
+					}else {
+						map[x][y]=true;
+					}
+				}
+			}
+		}
 	}
 	
 	private boolean[] getDirections(int x,int y) {
@@ -216,13 +316,5 @@ public class DFSMaker extends Runner {
 		}catch(Exception e) {}
 		
 		return new boolean[] {up,down,left,right};
-	}
-	
-	public boolean[][] getMap(){
-		return map;
-	}
-	
-	public boolean getDone() {
-		return done;
 	}
 }
