@@ -25,14 +25,7 @@ public class Exit extends Entity implements Tickable,Renderable {
 	}
 	
 	public void render(Graphics2D g) {
-		
-		Entrance entrance=display.getRunState().getEntrance();
-		
-		if(entrance.getX()==x && entrance.getY()==y) {
-			g.setColor(Color.GREEN);
-		}else {
-			g.setColor(Color.BLUE);
-		}
+		g.setColor(Color.BLUE);
 		g.fillRect(x,y,display.getResolution(),display.getResolution());
 	}
 }
