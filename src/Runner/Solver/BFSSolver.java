@@ -2,10 +2,10 @@ package Runner.Solver;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
+import Entity.Entity;
 import Entity.Entrance;
 import Entity.Exit;
+import Entity.Path;
 import Entity.Wall;
 import Main.Display;
 import Runner.Runner;
@@ -23,10 +23,6 @@ public class BFSSolver extends Runner {
 	private ArrayList<int[]> steps=new ArrayList<int[]>();
 	
 	private boolean[][] map;
-	
-	private int[] solution;
-	
-	private boolean done;
 	
 	public BFSSolver(Display display) {
 		super(display);
@@ -46,15 +42,18 @@ public class BFSSolver extends Runner {
 	public void run() {
 		map=new boolean[display.getWidth()/display.getResolution()][display.getHeight()/display.getResolution()];
 		
+		Entity[][] entities=display.getRunState().getEntities();
+		
 		Exit exit=display.getRunState().getExit();
 		
 		Entrance entrance=display.getRunState().getEntrance();
 		
-		ArrayList<Wall> walls=display.getRunState().getWalls();
-		
-		for(int i=0;i<walls.size();i++) {
-			Wall wall=walls.get(i);
-			map[wall.getX()/display.getResolution()][wall.getY()/display.getResolution()]=true;
+		for(int x=0;x<entities.length;x++) {
+			for(int y=0;y<entities.length;y++) {
+				if(entities[x][y] instanceof Wall) {
+					map[x][y]=true;
+				}
+			}
 		}
 		
 		targetX=exit.getX()/display.getResolution(); targetY=exit.getY()/display.getResolution();
@@ -171,7 +170,7 @@ public class BFSSolver extends Runner {
 			steps=newSteps;
 		}
 		
-		done=true;
+		stop();
 	}
 	
 	private boolean contains(int[] array,ArrayList<int[]> list) {
@@ -192,13 +191,30 @@ public class BFSSolver extends Runner {
 			
 			if(location[0]==targetX && location[1]==targetY) {
 				
-				try {
-				solution=steps.get(i);
+				Entity[][] entities=display.getRunState().getEntities();
 				
-				solution[solution.length-1]=-1;
+				int[] step=steps.get(i);
 				
-				}catch(Exception exception) {
-					JOptionPane.showMessageDialog(display.getWindow().getFrame(),"Position Collide");
+				int x=display.getRunState().getEntrance().getX()/display.getResolution();
+				
+				int y=display.getRunState().getEntrance().getY()/display.getResolution();
+				
+				for(int w=0;w<step.length-1;w++) {
+					int localStep=step[w];
+					
+					if(localStep==1) {
+						y--;
+						entities[x][y]=new Path(display,x*display.getResolution(),y*display.getResolution());
+					}else if(localStep==2) {
+						y++;
+						entities[x][y]=new Path(display,x*display.getResolution(),y*display.getResolution());
+					}else if(localStep==3) {
+						x--;
+						entities[x][y]=new Path(display,x*display.getResolution(),y*display.getResolution());
+					}else if(localStep==4) {
+						x++;
+						entities[x][y]=new Path(display,x*display.getResolution(),y*display.getResolution());
+					}
 				}
 				
 				return true;
@@ -254,13 +270,5 @@ public class BFSSolver extends Runner {
 		}catch(Exception e) {}
 		
 		return new boolean[] {up,down,left,right};
-	}
-	
-	public int[] getSolution() {
-		return solution;
-	}
-	
-	public boolean getDone() {
-		return done;
 	}
 }
