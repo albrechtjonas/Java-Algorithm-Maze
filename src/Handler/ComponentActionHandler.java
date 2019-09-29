@@ -19,6 +19,7 @@ public class ComponentActionHandler implements ActionListener {
 		String text=display.getWindow().getTextField().getText();
 		
 		if(text.equals("make")) {
+			display.getRunState().reset();
 			display.getRunState().setDFSMaking(true);
 			display.getWindow().getTextField().setText("");
 		}else if(text.equals("solve")) {
@@ -29,6 +30,7 @@ public class ComponentActionHandler implements ActionListener {
 			display.getWindow().getTextField().setText("");
 		}else if(text.contains("setResolution")) {
 			display.setResolution(Integer.valueOf(text.substring(14)));
+			display.getRunState().reset();
 			display.getWindow().getTextField().setText("");
 		}else {
 			JOptionPane.showMessageDialog(display.getWindow().getFrame(),"Unknown Command");
